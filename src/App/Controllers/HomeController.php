@@ -14,12 +14,13 @@ class HomeController
 
    public function __construct()
    {
-      $this->view = new TemplateEngine(Paths::class);
+      $this->view = new TemplateEngine(Paths::VIEW); // the template engine points to the paths that contains constant VIEW
    }
 
    public function Home()
    {
-      dd($this->view);
-      echo " Home page";
+      echo  $this->view->render("/index.php", [
+         'title' => 'Home page'
+      ]);
    }
 }
