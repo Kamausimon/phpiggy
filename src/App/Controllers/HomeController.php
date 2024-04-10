@@ -15,6 +15,7 @@ class HomeController
    public function __construct(private TemplateEngine $view)
    {
       // the template engine points to the paths that contains constant VIEW
+
    }
 
    public function Home()
