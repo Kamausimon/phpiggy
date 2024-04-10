@@ -10,11 +10,11 @@ use App\Config\Paths;
 
 class HomeController
 {
-   private TemplateEngine $view;
 
-   public function __construct()
+
+   public function __construct(private TemplateEngine $view)
    {
-      $this->view = new TemplateEngine(Paths::VIEW); // the template engine points to the paths that contains constant VIEW
+      // the template engine points to the paths that contains constant VIEW
    }
 
    public function Home()
