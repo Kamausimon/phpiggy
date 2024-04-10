@@ -21,7 +21,7 @@ class HomeController
    public function Home()
    {
       echo  $this->view->render("/index.php", [
-         'title' => 'Home page'
+         'title' => 'Expense Tracker App'
       ]);
    }
 }
