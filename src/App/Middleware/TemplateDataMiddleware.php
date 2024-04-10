@@ -4,7 +4,17 @@ declare(strict_types=1);
 
 namespace App\Middleware;
 
+use Framework\contracts\MiddlewareInterface;
+use Framework\TemplateEngine;
 
-class TemplateDataMiddleware
+class TemplateDataMiddleware implements MiddlewareInterface
 {
+    public function __construct(private TemplateEngine $view)
+    {
+    }
+
+    public function process(callable $next)
+    {
+        echo "Template data middleware";
+    }
 }
