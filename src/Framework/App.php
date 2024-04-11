@@ -38,4 +38,8 @@ class App
    {
       $this->router->addMiddleware($middleware);
    }
+   public function post(string $path, array $controller)
+   {
+      $this->router->add('POST', $path, $controller);
+   }
 }

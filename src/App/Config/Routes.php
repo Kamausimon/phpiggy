@@ -12,5 +12,6 @@ function registerRoutes(App $app)
 {
     $app->get('/', [HomeController::class, 'Home']);
     $app->get('/about', [AboutController::class, 'About']);
-    $app->get('/register', [AuthController::class, 'register']);
+    $app->get('/register', [AuthController::class, 'registerView']);
+    $app->post('/register', [AuthController::class, 'register']);
 }
