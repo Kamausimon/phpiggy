@@ -16,6 +16,9 @@ function e(mixed $value): string
      return htmlspecialchars((string) $value);
 }
 
-function redirectTo()
+function redirectTo(string $path)
 {
+     header("Location:{$path}");
+     http_response_code(302);
+     exit;
 }
