@@ -15,3 +15,7 @@ function e(mixed $value): string
 {
      return htmlspecialchars((string) $value);
 }
+
+function redirectTo()
+{
+}
