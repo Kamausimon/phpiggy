@@ -26,6 +26,13 @@ class AuthController
 
         $this->UserService->isEmailTaken($_POST['email']);
 
+        $this->UserService->create($_POST);
+
         redirectTo('/');
+    }
+
+    public function loginView()
+    {
+        echo $this->view->render("/login.php");
     }
 }

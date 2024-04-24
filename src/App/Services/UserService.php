@@ -26,4 +26,19 @@ class UserService
             throw new ValidationException(['email' => 'Email Taken']);
         }
     }
+
+    public function create(array $formData)
+    {
+        $password = password_hash($formData['password'], PASSWORD_BCRYPT, ['cost' => 12]);
+        $this->db->query(
+            "INSERT INTO users(email,password,age,country,social_media_url) VALUES( :email, :password, :age, :country, :url)",
+            [
+                'email' => $formData['email'],
+                'password' => $password,
+                'age' => $formData['age'],
+                'country' => $formData['country'],
+                'url' => $formData['socialMediaUrl']
+            ]
+        );
+    }
 }
