@@ -48,6 +48,12 @@ class UserService
             'email' => $formData['email']
         ])->find();
 
-        $passwordMatch = password_verify($formData['password'], $user['userPassword']);
+        $passwordMatch = password_verify($formData['password'], $user['password'] ?? '');
+
+        if (!$user || !$passwordMatch) {
+            throw new ValidationException(['password' => ['Invalid credentials']]);
+        }
+
+        $_SESSION['user'] = $user['id'];
     }
 }
