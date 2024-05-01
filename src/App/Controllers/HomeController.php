@@ -22,6 +22,7 @@ class HomeController
    public function Home()
    {
       $transactions = $this->transactionService->getUserTransactions();
+
       echo  $this->view->render("/index.php", [
          'title' => 'Expense Tracker App', 'transactions' => $transactions
       ]);
