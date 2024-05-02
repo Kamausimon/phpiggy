@@ -31,6 +31,6 @@ class TransactionController
 
     public function editView(array $params)
     {
-        dd($params);
+        $this->transactionService->getUserTransaction($param['transaction']);
     }
 }

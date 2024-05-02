@@ -48,4 +48,15 @@ class TransactionService
         )->count();
         return [$transactions, $transactionCount];
     }
+
+    public function getUserTransaction(string $id)
+    {
+        return $this->db->query(
+            "SELECT * FROM transactions WHERE id = :id  AND user_id = :user_id",
+            [
+                'id' => $id,
+                'user_id' => $_SESSION['user']
+            ]
+        )->find();
+    }
 }
