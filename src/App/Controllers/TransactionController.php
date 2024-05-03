@@ -56,6 +56,8 @@ class TransactionController
     }
     public function delete(array $params)
     {
-        dd($params);
+        $this->transactionService->delete((int)$params['transaction']);
+
+        redirectTo('/');
     }
 }
