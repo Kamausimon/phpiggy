@@ -28,6 +28,21 @@ class ReceiptService
                 'receipt' => ['File upload is too large']
             ]);
         }
-        dd($file);
+
+        $originalFileName = $file['name'];
+
+        if (!preg_match('/^[A-za-z0-9\s._-]+$/', $originalFileName)) {
+            throw new ValidationException([
+                'receipt' => ['Invalid filename']
+            ]);
+        }
+        $clientMimeType = $file['type'];
+        $allowedMimeTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+
+        if (!in_array($clientMimeType, $allowedMimeTypes)) {
+            throw new ValidationException([
+                'receipt' => ['invalid file type']
+            ]);
+        }
     }
 }
