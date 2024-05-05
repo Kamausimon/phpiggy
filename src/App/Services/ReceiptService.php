@@ -48,7 +48,7 @@ class ReceiptService
         }
     }
 
-    public function upload(array $file)
+    public function upload(array $file, int $transaction)
     {
         $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
         $newFileName = bin2hex(random_bytes(16)) . "." . $fileExtension;
@@ -60,5 +60,16 @@ class ReceiptService
                 'receipt' => ['failed to upload file']
             ]);
         }
+
+        $this->db->query(
+            "INSERT INTO receipts(transaction_id, original_filename, storage_filename,media_type) VALUES 
+            (:transaction_id, :original_filename, :storage_filename, :media_type)",
+            [
+                'transaction_id' => $transaction,
+                'original_filename' => $file['name'],
+                'storage_filename' => $newFileName,
+                'media_type' => $file['type']
+            ]
+        );
     }
 }
