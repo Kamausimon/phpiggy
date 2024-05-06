@@ -81,6 +81,8 @@ class ReceiptService
                 'id' => $id
             ]
         )->findAll();
+
+        return $receipt;
     }
 
     public function read(array $receipt)
